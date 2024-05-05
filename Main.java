@@ -28,7 +28,7 @@ public class Main {
     Worker worker5 = new Worker("Austin2", 3000.0, 1, "2024-01-01");
 
     Worker worker6 = new Worker("Rob2", 3500.0, 9, "2024-01-02");
-    Worker worker7 = new Worker("Dave", 4500.0, 9, "2024-01-03");
+    Worker worker7 = new Worker("Dave2", 4500.0, 9, "2024-01-03");
     Manager manager2 = new Manager("Caroline2", 4000.0, 8, "2024-01-05");
 
     List<Employee> employees2 = new ArrayList<>();
@@ -45,6 +45,44 @@ public class Main {
     System.out.println("is worker6 id to worker5 id: " + worker6.equals(worker5));
     System.out.println("is worker6 id to manager2 id: " + worker6.equals(manager2));
 
+    employees.add(worker5);
+    employees.add(worker6);
+    employees.add(worker7);
+    employees.add(manager2);
+
+    Worker worker8 = new Worker("Austin3", 3000.0, 9, "2024-01-01");
+    Manager manager3 = new Manager("Caroline3", 4000.0, 11, "2024-01-05");
+
+    employees.add(worker8);
+    employees.add(manager3);
+    Double totalSalary = 0.0;
+    Double totalManagerSalary = 0.0;
+    Double totalWorkerSalary = 0.0;
+
+    for (Employee employee : employees) {
+      totalSalary += employee.getSalary();
+      if (employee instanceof Manager) {
+        totalManagerSalary += employee.getSalary();
+      } else if (employee instanceof Worker) {
+        totalWorkerSalary += employee.getSalary();
+      }
+    }
+
+    System.out.println("Total salary: " + totalSalary);
+    System.out.println("Total manager salary: " + totalManagerSalary);
+    System.out.println("Total worker salary: " + totalWorkerSalary);
+
+    for (Employee employee : employees) {
+      for (Employee employee2 : employees) {
+        if (employee.equals(employee2) && employee != employee2) {
+          System.out.println(
+              "Duplicated id: " + employee.getId() + " for " + employee.getName() + " same as " + employee2.getName());
+        }
+      }
+    }
+
   }
 }
+  
+
   
